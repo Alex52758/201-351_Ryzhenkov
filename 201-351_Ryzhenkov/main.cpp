@@ -1,20 +1,22 @@
+#include "mainwindow.h"
+
 #include <QApplication>
-#include "loginpage.h"
-#include "gamepage.h"
+#include <QDebug>
+#include <windows.h>
+#include <QMessageBox>
+#include <iostream>
+#include <TlHelp32.h>
+#include <vector>
+#include <QProcess>
 
-int main(int argc, char** argv) {
-    QApplication app(argc, argv);
 
-    LoginPage loginPage;
-    GamePage gamePage;
 
-    // Логика перехода со страницы авторизации на страницу игры
-    QObject::connect(&loginPage, &LoginPage::loginSuccess, [&]() {
-        loginPage.hide();
-        gamePage.show();
-    });
+int main(int argc, char *argv[])
+{
 
-    loginPage.show();
-    return app.exec();
+    QApplication a(argc, argv);
+    setlocale(LC_ALL, "rus");
+    MainWindow w;
+    w.show();
+    return a.exec();
 }
-
